@@ -1,0 +1,200 @@
+:root {
+  --transparentBlack: #000000b3;
+  --halfTransparentBlack: #00000066;
+  --transparentRedBlack: #1f0e0e66;
+  --fullTransparentWhite: #ffffff4d;
+  --halfTransparentWhite: #ffffff66;
+  --fullTransparentRed: #ff000033;
+  --darkYellow: #9aa521;
+  --lightGray: #ddd;
+  --gray: #ccc;
+  --simpleGray: #aaa;
+  --lightOrange: #ffd700;
+}
+
+.table-foods {
+  display: flex;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px 15px 22px 15px;
+}
+
+.food {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.child-food {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  top: calc(50% - 25px);
+  left: calc(50% - 25px);
+  z-index: 999;
+}
+
+.food_target {
+  animation: food 1s infinite;
+  animation-delay: 0s, 0.5s;
+  transform-origin: bottom;
+}
+
+.info {
+  display: none;
+  position: absolute;
+  white-space: pre-line;
+  max-width: 300px;
+  width: max-content;
+  height: 65px;
+  bottom: calc(90% + 25px);
+
+  z-index: 999;
+  background: white;
+  color: var(--transparentBlack);
+
+  font-size: 18px;
+  font-family: menlo, monospace, sans-serif;
+}
+
+.info.help {
+  display: block;
+}
+
+.food._hovered {
+  box-shadow: 0 0 0 10px var(--halfTransparentWhite);
+}
+
+.child-food._hovered {
+  box-shadow: 0 0 0 10px var(--transparentRedBlack);
+}
+.win {
+  animation: winMove 0.2s 1;
+  transform: translateY(-400px);
+}
+
+@keyframes winMove {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-400px);
+  }
+}
+
+.mark._hovered {
+  color: var(--simpleGray);
+}
+.child-mark._hovered {
+  color: var(--simpleGray);
+}
+
+.child-mark {
+  color: var(--fullTransparentWhite);
+}
+
+apple {
+  background: red;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px var(--halfTransparentBlack);
+}
+
+apple::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background: var(--fullTransparentWhite);
+  height: 30%;
+  width: 30%;
+  top: 5%;
+  left: 45%;
+  border-radius: 50%;
+}
+
+.gold {
+  background: var(--lightOrange);
+}
+
+plate {
+  background: var(--lightGray);
+}
+
+plate::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: calc(50% - 32px);
+  top: calc(50% - 32px);
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+  border-top: solid 6px var(--gray);
+  background: var(--lightGray);
+  z-index: 1;
+}
+
+.cool-plate::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 98%;
+  height: 98%;
+  left: 1%;
+  top: 1%;
+  border-radius: 50%;
+  z-index: 0;
+  background: var(--fullTransparentRed);
+}
+
+egg {
+  background: var(--lightOrange);
+}
+
+egg::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background: var(--fullTransparentWhite);
+  height: 30%;
+  width: 30%;
+  top: 5%;
+  left: 45%;
+  border-radius: 50%;
+}
+
+.ugly {
+  background: var(--darkYellow);
+}
+.ugly::before {
+  top: 10px;
+  box-shadow: 0 0px 0 0px red;
+}
+
+.small {
+  width: 50px;
+  height: 50px;
+}
+
+@keyframes food {
+  0% {
+    transform: skew(4deg, 0deg) scaleX(1);
+  }
+  10% {
+    transform: skew(1deg, 0deg) scaleY(0.9);
+  }
+  50% {
+    transform: skew(-4deg, 0deg) scaleX(1);
+  }
+  60% {
+    transform: skew(-1deg, 0deg) scaleY(0.9);
+  }
+  100% {
+    transform: skew(4deg, 0deg) scaleX(1);
+  }
+}
